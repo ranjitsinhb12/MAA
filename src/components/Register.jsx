@@ -1,11 +1,32 @@
-import React from 'react'
+import {useRef, useState, useEffect} from 'react'
+
+const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{2,21}$/;
+const PWD_REGEX = /^(?=.[a-z])(?=.*[0-9])(?=.*[!@#%]).{8,24}$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 
 function Register() {
+    const userRef = useRef()
+    const errRef = useRef()
+
+    const [user, setUser] = useState('')
+    const [password, setPassword] = useState('')
+    const [fullName, setFullName] = useState('')
+    const [mobile, setMobile] = useState('')
+    const [email, setemail] = useState('')
+    const[errMsg, setErrMsg] = useState('')
+    const[success, setSuccess] = useState(false)
+
+    
+
     return (
         <section className=' bg-xdarkb overflow-auto min-h-lvh'>
             <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="flex items-center justify-center px-4 pt-10 sm:px-6 sm:pt-16 lg:px-8 lg:pt-24">
                 <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
+                <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'} aria-live='assertive'>
+                    {errMsg}
+                </p>
                     <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl pb-4">
                     Register User
                     </h2>
@@ -21,7 +42,13 @@ function Register() {
                             type="text"
                             placeholder="Full Name"
                             id="name"
+                            autoComplete='off'
+                            onChange={(e)=> setFullName(e.target.value)}
+                            required
                             />
+                            <p id="fullNameNote">
+            
+                            </p>
                         </div>
                         </div>
                         <div>
@@ -35,6 +62,9 @@ function Register() {
                             type="text"
                             placeholder="Mobile"
                             id="mobile"
+                            autoComplete='off'
+                            onChange={(e)=> setMobile(e.target.value)}
+                            required
                             />
                         </div>
                         </div>
@@ -49,6 +79,9 @@ function Register() {
                             type="email"
                             placeholder="Email"
                             id="email"
+                            autoComplete='off'
+                            onChange={(e)=> setemail(e.target.value)}
+                            required
                             />
                         </div>
                         </div>
@@ -63,6 +96,9 @@ function Register() {
                             type="text"
                             placeholder="Username"
                             id="username"
+                            autoComplete='off'
+                            onChange={(e)=> setUser(e.target.value)}
+                            required
                             />
                         </div>
                         </div>
@@ -82,7 +118,10 @@ function Register() {
                             type="password"
                             placeholder="Password"
                             id="password"
+                            onChange={(e)=> setPassword(e.target.value)}
+                            required
                             />
+                            <p id="passErr">  </p>
                         </div>
                         </div>
                         <div>
@@ -96,6 +135,7 @@ function Register() {
                             type="file"
                             placeholder="Avatar"
                             id="avatar"
+                            required
                             />
                         </div>
                         </div>
@@ -115,7 +155,7 @@ function Register() {
                         </label>
                         <div className="mt-2 pb-4">
                             <input type="checkbox" id="Location1" name="Locations" value="Location1" />      
-                            <label for="Location1" className='text-white'> {" "}Location 1</label>
+                            <label htmlFor="Location1" className='text-white'> {" "}Location 1</label>
                         </div>
                         </div>
                         <div>
@@ -125,11 +165,11 @@ function Register() {
                         </label>
                         <div className="mt-2  pb-4">
                             <input type="radio" id="TFN" name="payMethod" value="TFN" />
-                            <label for="TFN" className='text-white'>{" "}TFN</label> <br />
+                            <label htmlFor="TFN" className='text-white'>{" "}TFN</label> <br />
                             <input type="radio" id="ABN" name="payMethod" value="ABN" /> 
-                            <label for="ABN" className='text-white'> {" "}ABN</label><br />
+                            <label htmlFor="ABN" className='text-white'> {" "}ABN</label><br />
                             <input type="radio" id="Cash" name="payMethod" value="Cash" />
-                            <label for="Cash" className='text-white'>{" "}Cash</label>
+                            <label htmlFor="Cash" className='text-white'>{" "}Cash</label>
                         </div>
                         </div>
                         <div>

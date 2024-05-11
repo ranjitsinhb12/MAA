@@ -1,27 +1,87 @@
+import {useRef, useState, useEffect} from 'react'
+import useAuth from '../hooks/useAuth';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios'
 
 
 function Login() {
+  const {setAuth} = useAuth()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location?.state?.from?.pathname || "/home"
+   const userRef = useRef()
+   const errRef = useRef()
+
+   const [user, setUserName] = useState('')
+   const [password, setPassword] = useState('')
+   const [errMsg, setErrMsg] = useState('')
+
+   useEffect(() => {
+    userRef.current;
+  }, [])
+   useEffect(()=>{
+    setErrMsg('')
+   }, [user, password])
+
+  const handleSubmit = async (e)=>{
+    e.preventDefault()
+    try {
+      const response = await axios.post('/api/v1/user/login',
+        {
+        UserName: user,
+        UserPassword: password
+      },
+      {
+        header:
+        {'Content-Type' : 'application/json'},
+        withCredentials: true
+      })
+      console.log(JSON.stringify(response?.data?.data))
+      const accessToken = response?.data?.data?.accessToken
+      const roles = response?.data?.data?.user?.RoleId
+      setAuth({user, password, roles, accessToken})
+      setUserName('')
+      setPassword('')
+      navigate(from, {replace: true})
+    } catch (err) {
+      if(!err?.response){
+        setErrMsg('No server response')
+      }else if(err.response?.status === 400){
+        setErrMsg('Username and password is required!')
+      }
+      else if(err.response?.status === 404){
+        setErrMsg('No Account found for this user!')
+      }else if(err.response?.status === 401){
+        setErrMsg('Invalid user credentials!')
+      }else if(err.response?.status === 402){
+        setErrMsg('Unauthorised request!')
+      }else{
+        setErrMsg('Login Failed!')
+      }
+      errRef.current;
+    }
+  }
 
     return (
        
-        <section classNameName="bg-xdarkb overflow-auto">
-        <div classNameName="grid grid-cols-1 lg:grid-cols-2 h-svh">
-          <div classNameName="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
-            <div classNameName="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-              <h2 classNameName="text-3xl font-bold leading-tight text-org sm:text-4xl">
+        <section className="bg-xdarkb overflow-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 h-svh">
+          <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
+            <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
+              <h2 className="text-3xl font-bold leading-tight text-org sm:text-4xl">
                 Sign in
               </h2>
-              <p  classNameName={`errorMsg? 'errorMsg' : 'offscreen' text-red-500 m-2`} aria-live="assertive"></p>
-              <htmlForm    classNameName="mt-8">
-                <div classNameName="space-y-5">
+              <p  className={`errorMsg? 'errorMsg' : 'offscreen' text-red-500 m-2`} aria-live="assertive"></p>
+              <form onSubmit={handleSubmit}  className="mt-8">
+                <div className="space-y-5">
                   <div>
-                    <label htmlhtmlFor="userName" classNameName="text-base font-medium text-back">
+                    <label htmlFor="userName" className="text-base font-medium text-back">
                       {" "}
                       Username{" "}
                     </label>
-                    <div classNameName="mt-2">
+                    <div className="mt-2">
                       <input
-                        classNameName="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 text-back disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 text-back disabled:cursor-not-allowed disabled:opacity-50"
                         type="text"
                         id="userName"
                         autoComplete='off'
@@ -32,15 +92,15 @@ function Login() {
                     </div>
                   </div>
                   <div>
-                    <div classNameName="flex items-center justify-between">
-                      <label htmlhtmlFor="password" classNameName="text-base font-medium text-back">
+                    <div className="flex items-center justify-between">
+                      <label htmlFor="password" className="text-base font-medium text-back">
                         {" "}
                         Password{" "}
                       </label>
                     </div>
-                    <div classNameName="mt-2">
+                    <div className="mt-2">
                       <input
-                        classNameName="flex h-10 text-back w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex h-10 text-back w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="password"
                         id='password'
                         onChange={e=>setPassword(e.target.value)}
@@ -51,7 +111,7 @@ function Login() {
                   </div>
                   <div>
                     <button
-                      classNameName="inline-flex w-full items-center justify-center rounded-md bg-skyb px-3.5 py-2.5 font-semibold leading-7 text-black hover:bg-darkb hover:text-white"
+                      className="inline-flex w-full items-center justify-center rounded-md bg-skyb px-3.5 py-2.5 font-semibold leading-7 text-black hover:bg-darkb hover:text-white"
                     >
                       Sign In{" "}
                       <svg
@@ -64,7 +124,7 @@ function Login() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        classNameName="ml-2"
+                        className="ml-2"
                       >
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
@@ -72,12 +132,12 @@ function Login() {
                     </button>
                   </div>
                 </div>
-              </htmlForm>
+              </form>
             </div>
           </div>
-          <div classNameName="h-full w-full">
+          <div className="h-full w-full">
             <img
-              classNameName="mx-auto h-full w-full rounded-md object-cover"
+              className="mx-auto h-full w-full rounded-md object-cover"
               src="../../public/maa_Logo.png"
               alt=""
             />
