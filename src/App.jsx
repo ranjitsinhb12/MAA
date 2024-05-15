@@ -1,5 +1,6 @@
-import {Login, Layout, Register, Missing, RequireAuth, Home, Unauthorised, Profile, Admin} from "./components/index"
+import {Login, Register, Missing, RequireAuth, Home, Unauthorised, Profile, Admin, PersistLogin} from "./components/index"
 import {Routes, Route} from 'react-router-dom'
+import Layout from "./Layout"
 
 function App() {
   const ROLES = {
@@ -17,21 +18,34 @@ function App() {
   return (
     <>
       <Routes>
+        
+        <Route >
+        {/* Public Route */}
+      <Route path="/" element={<Login />} />
         <Route path="/" element={<Layout />}>
-            <Route path="/" element={<Login />} />
-            
-            <Route element={<RequireAuth allowedRoles={ROLES[1008]}  />}>
-              <Route path="home" element={<Home />} />
-              <Route path="profile" element={<Profile />} />
-            </Route>
-              <Route element={<RequireAuth allowedRoles={ROLES[1003]} />}>
-                <Route path="register" element={<Register />} />
+            {/* All User Loging Route */}
+            <Route element={<PersistLogin />}>
+              <Route element={<RequireAuth allowedRoles={ROLES[1008]}  />}>
+                <Route path="home" element={<Home />} />
+                <Route path="profile" element={<Profile />} />
+              </Route>
+
+              {/* Only Admin User Routes */}
+              <Route element={<RequireAuth allowedRoles={ROLES[1001]} />}>
                 <Route path="admin" element={<Admin />} />
               </Route>
-           
-            <Route path="unauthorised" element={< Unauthorised />} />
+              { /* Manager and Above user Route */}
+              <Route element={<RequireAuth allowedRoles={ROLES[1003]} />}>
+                <Route path="register" element={<Register />} />
+              </Route>
+            
+              {/* Unauthorised Route */}
+              <Route path="unauthorised" element={< Unauthorised />} />
+            </Route>
+            {/* Catch All ROute */}
             <Route path="*" element={<Missing />} />
         </Route> 
+        </Route>
       </Routes>
     </>
   )

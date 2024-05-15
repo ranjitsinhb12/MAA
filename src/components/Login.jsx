@@ -5,7 +5,7 @@ import axios from 'axios'
 
 
 function Login() {
-  const {setAuth} = useAuth()
+  const {setAuth, persist, setPersist} = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
   const from = location?.state?.from?.pathname || "/home"
@@ -39,39 +39,48 @@ function Login() {
       console.log(JSON.stringify(response?.data?.data))
       const accessToken = response?.data?.data?.accessToken
       const roles = response?.data?.data?.user?.RoleId
-      setAuth({user, password, roles, accessToken})
+      setAuth({user, roles, accessToken})
       setUserName('')
       setPassword('')
       navigate(from, {replace: true})
     } catch (err) {
       if(!err?.response){
-        setErrMsg('No server response')
+        setErrMsg(' No server response ')
       }else if(err.response?.status === 400){
-        setErrMsg('Username and password is required!')
+        setErrMsg(' Username and password is required! ')
       }
       else if(err.response?.status === 404){
-        setErrMsg('No Account found for this user!')
+        setErrMsg(' No Account found for this user! ')
       }else if(err.response?.status === 401){
-        setErrMsg('Invalid user credentials!')
+        setErrMsg(' Invalid user credentials! ')
       }else if(err.response?.status === 402){
-        setErrMsg('Unauthorised request!')
+        setErrMsg(' Unauthorised request! ')
       }else{
-        setErrMsg('Login Failed!')
+        setErrMsg(' Login Failed! ')
       }
       errRef.current;
     }
   }
 
+    const togglePersist = ()=> {
+      setPersist(prev => !prev)
+    }
+
+    useEffect(()=>{
+      localStorage.setItem("persist", persist)
+    },[persist])
+
     return (
        
         <section className="bg-xdarkb overflow-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 h-svh">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
             <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
+            <p  className={ `${ errMsg ? ' bg-pink-200 p-4 text-red-500 m-2' : 'offscreen'} `} aria-live="assertive">{errMsg}</p>
               <h2 className="text-3xl font-bold leading-tight text-org sm:text-4xl">
                 Sign in
               </h2>
-              <p  className={`errorMsg? 'errorMsg' : 'offscreen' text-red-500 m-2`} aria-live="assertive"></p>
+              
               <form onSubmit={handleSubmit}  className="mt-8">
                 <div className="space-y-5">
                   <div>
@@ -110,6 +119,22 @@ function Login() {
                     </div>
                   </div>
                   <div>
+
+                    <div className="mt-2">
+                      <input
+                        className=""
+                        type="checkbox"
+                        id='persist'
+                        onChange={togglePersist}
+                        checked={persist}
+                      />
+                      <label htmlFor="persist" className="text-base font-medium text-back">
+                        {" "}
+                        Trust This Device?{" "}
+                      </label>
+                    </div>
+                  </div>
+                  <div>
                     <button
                       className="inline-flex w-full items-center justify-center rounded-md bg-skyb px-3.5 py-2.5 font-semibold leading-7 text-black hover:bg-darkb hover:text-white"
                     >
@@ -137,7 +162,7 @@ function Login() {
           </div>
           <div className="h-full w-full">
             <img
-              className="mx-auto h-full w-full rounded-md object-cover"
+              className="mx-auto h-svh w-full rounded-md object-contain"
               src="../../public/maa_Logo.png"
               alt=""
             />

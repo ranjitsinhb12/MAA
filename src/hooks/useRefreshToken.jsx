@@ -12,7 +12,9 @@ function useRefreshToken() {
             console.log(JSON.stringify(prev))
             console.log(response.data.data.accessToken)
             return {
-                ...prev, accessToken : response?.data?.data?.accessToken}
+                ...prev,
+                roles: response?.data?.data?.roles,
+                accessToken : response?.data?.data?.accessToken}
         })
         return response.data.data.accessToken
         

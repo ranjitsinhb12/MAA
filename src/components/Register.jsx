@@ -20,18 +20,16 @@ function Register() {
     
 
     return (
-        <section className=' bg-xdarkb overflow-auto min-h-lvh'>
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="flex items-center justify-center px-4 pt-10 sm:px-6 sm:pt-16 lg:px-8 lg:pt-24">
-                <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-                <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'} aria-live='assertive'>
-                    {errMsg}
-                </p>
-                    <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl pb-4">
-                    Register User
+        <section>
+            <div className=' flex flex-col sm:flex-row mb-4 mt-10 sm:mt-6'>
+                <div className=' basis-1/2 px-8'>
+                    <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'} aria-live='assertive'>
+                        {errMsg}
+                    </p>
+                    <h2 className="text-xl font-bold leading-tight text-org sm:text-2xl pb-4 pt-4">
+                     Register User
                     </h2>
-                    <div className="space-y-5">
-                        <div>
+                    <div className='mb-4'>
                         <label htmlFor="name" className="text-base font-medium text-white">
                             {" "}
                             Full Name{" "}
@@ -50,8 +48,9 @@ function Register() {
             
                             </p>
                         </div>
-                        </div>
-                        <div>
+                    </div>
+
+                    <div className='mb-4'>
                         <label htmlFor="mobile" className="text-base font-medium text-white">
                             {" "}
                             Mobile{" "}
@@ -67,8 +66,9 @@ function Register() {
                             required
                             />
                         </div>
-                        </div>
-                        <div>
+                    </div>
+
+                    <div className='mb-4'>
                         <label htmlFor="email" className="text-base font-medium text-white">
                             {" "}
                             Email{" "}
@@ -84,8 +84,8 @@ function Register() {
                             required
                             />
                         </div>
-                        </div>
-                        <div>
+                    </div>
+                    <div className='mb-4'>
                         <label htmlFor="username" className="text-base font-medium text-white">
                             {" "}
                             Username{" "}
@@ -101,8 +101,8 @@ function Register() {
                             required
                             />
                         </div>
-                        </div>
-                        <div>
+                    </div>
+                    <div className='mb-4'>
                         <div className="flex items-center justify-between">
                             <label
                             htmlFor="password"
@@ -123,8 +123,9 @@ function Register() {
                             />
                             <p id="passErr">  </p>
                         </div>
-                        </div>
-                        <div>
+                    </div>
+
+                    <div>
                         <label htmlFor="avatar" className="text-base font-medium text-white">
                             {" "}
                             Avatar{" "}
@@ -138,32 +139,29 @@ function Register() {
                             required
                             />
                         </div>
-                        </div>
                     </div>
                 </div>
-                </div>
-                <div className="flex items-start justify-center px-4 pt-10 sm:px-6 sm:pt-16 lg:px-8 lg:pt-24">
-                <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-                    <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl pb-4">
+                <div className=' basis-1/2 px-8 pt-4'> 
+                    <h2 className="text-xl font-bold leading-tigh text-gray-400 sm:text-xl">
                         Locations & Pay
                     </h2>
-                    <div className="space-y-0">
-                        <div>
+                    <div>
                         <label htmlFor="locations" className="text-base font-medium text-white">
                             {" "}
-                            Locations{" "}
+                            Locations:{" "}
                         </label>
-                        <div className="mt-2 pb-4">
+                        <div className="pl-4 pb-4">
                             <input type="checkbox" id="Location1" name="Locations" value="Location1" />      
                             <label htmlFor="Location1" className='text-white'> {" "}Location 1</label>
                         </div>
-                        </div>
-                        <div>
+                    </div>
+
+                    <div>
                         <label htmlFor="payMethod" className="text-base font-medium text-white">
                             {" "}
                             Pay Method{" "}
                         </label>
-                        <div className="mt-2  pb-4">
+                        <div className=" pl-4  pb-4">
                             <input type="radio" id="TFN" name="payMethod" value="TFN" />
                             <label htmlFor="TFN" className='text-white'>{" "}TFN</label> <br />
                             <input type="radio" id="ABN" name="payMethod" value="ABN" /> 
@@ -171,8 +169,9 @@ function Register() {
                             <input type="radio" id="Cash" name="payMethod" value="Cash" />
                             <label htmlFor="Cash" className='text-white'>{" "}Cash</label>
                         </div>
-                        </div>
-                        <div>
+                    </div>
+
+                    <div>
                         <label htmlFor="payRates" className="text-base font-medium text-white">
                             {" "}
                             Pay Rate{" "}
@@ -185,20 +184,14 @@ function Register() {
                             id="payRates"
                             />
                         </div>
-                        </div>
                     </div>
+                
+                    
                 </div>
-                </div>  
+                
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-            <div className="flex items-center justify-center px-4 py-2 sm:px-6 sm:py-2 lg:px-8 lg:py-2">
-                <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-                </div>
-            </div>
-            <div className="flex items-center justify-center px-4 py-2 sm:px-6 sm:py-2 lg:px-8 lg:py-2">
-                <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-                    <div className="space-y-5">
-                        <div>
+            <div className='px-8'>
+                <div>
                         <button
                             type="button"
                             className="inline-flex w-full items-center justify-center rounded-md bg-darkb px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-org"
@@ -220,12 +213,9 @@ function Register() {
                             <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
                         </button>
-                        </div>
                     </div>
                 </div>
-                </div>
-            </div>
-            </section>
+        </section>
 
     )
 }

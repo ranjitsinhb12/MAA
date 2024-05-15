@@ -9,6 +9,9 @@ import Profile from "./Profile";
 import Users from "./Users";
 import Admin from "./Admin";
 import PersistLogin from "./PersistLogin";
+import Header from "./Header";
+import Footer from "./Footer";
+import TopNav from "./TopNav";
 
 
 
@@ -23,5 +26,8 @@ export{
     Profile,
     Users,
     Admin,
-    PersistLogin
+    PersistLogin,
+    Header,
+    Footer,
+    TopNav
 }
