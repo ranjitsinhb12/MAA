@@ -1,4 +1,7 @@
 import {useRef, useState, useEffect} from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight} from '@fortawesome/free-solid-svg-icons'
+
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{2,21}$/;
 const PWD_REGEX = /^(?=.[a-z])(?=.*[0-9])(?=.*[!@#%]).{8,24}$/;
@@ -26,17 +29,17 @@ function Register() {
                     <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'} aria-live='assertive'>
                         {errMsg}
                     </p>
-                    <h2 className="text-xl font-bold leading-tight text-org sm:text-2xl pb-4 pt-4">
+                    <h2 className="text-xl font-bold leading-tight text-orange-400 sm:text-2xl pb-4 pt-4">
                      Register User
                     </h2>
                     <div className='mb-4'>
-                        <label htmlFor="name" className="text-base font-medium text-white">
+                        <label htmlFor="name" className="text-base font-medium text-gray-600 dark:text-gray-300">
                             {" "}
                             Full Name{" "}
                         </label>
                         <div className="mt-2">
                             <input
-                            className=" text-white flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                            className=" text-gray-600 dark:text-white flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                             type="text"
                             placeholder="Full Name"
                             id="name"
@@ -51,13 +54,13 @@ function Register() {
                     </div>
 
                     <div className='mb-4'>
-                        <label htmlFor="mobile" className="text-base font-medium text-white">
+                        <label htmlFor="mobile" className="text-base font-medium text-gray-600 dark:text-gray-300">
                             {" "}
                             Mobile{" "}
                         </label>
                         <div className="mt-2">
                             <input
-                            className=" text-white flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                            className=" text-gray-600 dark:text-white flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                             type="text"
                             placeholder="Mobile"
                             id="mobile"
@@ -69,13 +72,13 @@ function Register() {
                     </div>
 
                     <div className='mb-4'>
-                        <label htmlFor="email" className="text-base font-medium text-white">
+                        <label htmlFor="email" className=" text-gray-600 dark:text-gray-300 font-medium ">
                             {" "}
                             Email{" "}
                         </label>
                         <div className="mt-2">
                             <input
-                            className=" text-white flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                            className=" text-gray-600 dark:text-white flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                             type="email"
                             placeholder="Email"
                             id="email"
@@ -86,13 +89,13 @@ function Register() {
                         </div>
                     </div>
                     <div className='mb-4'>
-                        <label htmlFor="username" className="text-base font-medium text-white">
+                        <label htmlFor="username" className="text-gray-600 dark:text-gray-300 font-medium">
                             {" "}
                             Username{" "}
                         </label>
                         <div className="mt-2">
                             <input
-                            className=" text-white flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                            className=" text-gray-600 dark:text-white flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                             type="text"
                             placeholder="Username"
                             id="username"
@@ -106,7 +109,7 @@ function Register() {
                         <div className="flex items-center justify-between">
                             <label
                             htmlFor="password"
-                            className="text-base font-medium text-white"
+                            className="text-base font-medium dark:text-gray-300 text-gray-600"
                             >
                             {" "}
                             Password{" "}
@@ -114,7 +117,7 @@ function Register() {
                         </div>
                         <div className="mt-2">
                             <input
-                            className=" text-white flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                            className=" text-gray-600 dark:text-white flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                             type="password"
                             placeholder="Password"
                             id="password"
@@ -126,13 +129,13 @@ function Register() {
                     </div>
 
                     <div>
-                        <label htmlFor="avatar" className="text-base font-medium text-white">
+                        <label htmlFor="avatar" className="text-base font-medium text-gray-600 dark:text-gray-300">
                             {" "}
                             Avatar{" "}
                         </label>
                         <div className="mt-2">
                             <input
-                            className=" text-white flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                            className=" text-gray-600 dark:text-white flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                             type="file"
                             placeholder="Avatar"
                             id="avatar"
@@ -142,43 +145,43 @@ function Register() {
                     </div>
                 </div>
                 <div className=' basis-1/2 px-8 pt-4'> 
-                    <h2 className="text-xl font-bold leading-tigh text-gray-400 sm:text-xl">
+                    <h2 className="text-xl font-bold leading-tigh text-gray-600 dark:text-gray-300 sm:text-xl">
                         Locations & Pay
                     </h2>
                     <div>
-                        <label htmlFor="locations" className="text-base font-medium text-white">
+                        <label htmlFor="locations" className="text-base font-medium text-gray-600 dark: dark:text-gray-300">
                             {" "}
                             Locations:{" "}
                         </label>
                         <div className="pl-4 pb-4">
-                            <input type="checkbox" id="Location1" name="Locations" value="Location1" />      
-                            <label htmlFor="Location1" className='text-white'> {" "}Location 1</label>
+                            <input type="checkbox" id="Location1" name="Locations" value="Location1"  className=' accent-sky-300' />      
+                            <label htmlFor="Location1" className='text-gray-600 dark:text-gray-300'> {" "}Location 1</label>
                         </div>
                     </div>
 
                     <div>
-                        <label htmlFor="payMethod" className="text-base font-medium text-white">
+                        <label htmlFor="payMethod" className="text-base font-medium text-gray-600 dark:text-gray-300">
                             {" "}
                             Pay Method{" "}
                         </label>
                         <div className=" pl-4  pb-4">
-                            <input type="radio" id="TFN" name="payMethod" value="TFN" />
-                            <label htmlFor="TFN" className='text-white'>{" "}TFN</label> <br />
-                            <input type="radio" id="ABN" name="payMethod" value="ABN" /> 
-                            <label htmlFor="ABN" className='text-white'> {" "}ABN</label><br />
-                            <input type="radio" id="Cash" name="payMethod" value="Cash" />
-                            <label htmlFor="Cash" className='text-white'>{" "}Cash</label>
+                            <input type="radio" id="TFN" name="payMethod" value="TFN" className=' accent-sky-300' />
+                            <label htmlFor="TFN" className='text-gray-600 dark:text-gray-300'>{" "}TFN</label> <br />
+                            <input type="radio" id="ABN" name="payMethod" value="ABN" className=' accent-sky-300' /> 
+                            <label htmlFor="ABN" className='text-gray-600 dark:text-gray-300'> {" "}ABN</label><br />
+                            <input type="radio" id="Cash" name="payMethod" value="Cash" className=' accent-sky-300' />
+                            <label htmlFor="Cash" className='text-gray-600 dark:text-gray-300'>{" "}Cash</label>
                         </div>
                     </div>
 
                     <div>
-                        <label htmlFor="payRates" className="text-base font-medium text-white">
+                        <label htmlFor="payRates" className="text-base font-medium text-gray-600 dark:text-gray-300">
                             {" "}
                             Pay Rate{" "}
                         </label>
                         <div className="mt-2">
                             <input
-                            className=" text-white flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                            className=" text-gray-600 dark:text-gray-300 flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                             type="text"
                             placeholder="Pay Rate"
                             id="payRates"
@@ -194,24 +197,10 @@ function Register() {
                 <div>
                         <button
                             type="button"
-                            className="inline-flex w-full items-center justify-center rounded-md bg-darkb px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-org"
+                            className="inline-flex w-full items-center justify-center rounded-md bg-sky-300 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-orange-400"
                         >
                             Create Account{" "}
-                            <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="ml-2"
-                            >
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
+                            <FontAwesomeIcon icon={faArrowRight} className='ml-4' />
                         </button>
                     </div>
                 </div>

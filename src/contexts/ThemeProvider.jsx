@@ -1,8 +1,8 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext} from "react";
 
 const ThemeContext = createContext({})
 
-export const themeProvider = ({children})=>{
+export const ThemeProvider = ({children})=>{
     const [themeMode, setThemeMode] = useState(localStorage.getItem('themeMode') || 'light')
     return(
         <ThemeContext.Provider value = {{ themeMode, setThemeMode}}>

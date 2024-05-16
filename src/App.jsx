@@ -2,6 +2,7 @@ import {Login, Register, Missing, RequireAuth, Home, Unauthorised, Profile, Admi
 import {Routes, Route} from 'react-router-dom'
 import Layout from "./Layout"
 
+
 function App() {
   const ROLES = {
     '1001': 1,
@@ -19,7 +20,7 @@ function App() {
     <>
       <Routes>
         
-        <Route >
+      
         {/* Public Route */}
       <Route path="/" element={<Login />} />
         <Route path="/" element={<Layout />}>
@@ -45,7 +46,7 @@ function App() {
             {/* Catch All ROute */}
             <Route path="*" element={<Missing />} />
         </Route> 
-        </Route>
+   
       </Routes>
     </>
   )
