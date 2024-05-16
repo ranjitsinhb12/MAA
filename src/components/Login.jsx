@@ -4,7 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight} from '@fortawesome/free-solid-svg-icons'
-
+import{Logo} from './index'
 
 function Login() {
   const {setAuth, persist, setPersist} = useAuth()
@@ -75,7 +75,7 @@ function Login() {
     return (
        
         <section className=" bg-neutral-200 dark:bg-gray-950 overflow-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 h-screen">
           <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
             <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
             <p  className={ `${ errMsg ? ' bg-pink-200 p-4 text-red-500 m-2' : 'offscreen'} `} aria-live="assertive">{errMsg}</p>
@@ -148,17 +148,8 @@ function Login() {
               </form>
             </div>
           </div>
-          <div className="h-full w-full">
-            <img
-              className="mx-auto h-svh w-full rounded-md object-contain dark:block hidden" 
-              src="/maa_logo_dark.png"
-              alt=""
-            />
-            <img
-              className="mx-auto h-svh w-full rounded-md object-contain dark:hidden" 
-              src="/maa_logo_light.png"
-              alt=""
-            />
+          <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
+            <Logo className="mx-auto h-svh w-full rounded-md object-contain" />
           </div>
         </div>
       </section>

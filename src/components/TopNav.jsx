@@ -5,19 +5,6 @@ import { faMoon, faLightbulb } from '@fortawesome/free-solid-svg-icons'
 
 function TopNav() {
     const {themeMode, setThemeMode } = useTheme()
-
-    // const lightMode = ()=>{
-    //     setThemeMode('light')
-    // }
-
-    // const darkMode = ()=>{
-    //     setThemeMode('dark')
-    // }
-
-    // const designerMode = () => {
-    //     setThemeMode('designer')
-    // }
-
     useEffect(()=>{
         localStorage.setItem("themeMode", themeMode)
     },[themeMode])

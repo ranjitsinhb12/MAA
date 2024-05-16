@@ -23,7 +23,7 @@ function Register() {
     
 
     return (
-        <section>
+        <section className='mb-8'>
             <div className=' flex flex-col sm:flex-row mb-4 mt-10 sm:mt-6'>
                 <div className=' basis-1/2 px-8'>
                     <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'} aria-live='assertive'>
@@ -195,15 +195,16 @@ function Register() {
             </div>
             <div className='px-8'>
                 <div>
-                        <button
-                            type="button"
-                            className="inline-flex w-full items-center justify-center rounded-md bg-sky-300 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-orange-400"
-                        >
-                            Create Account{" "}
-                            <FontAwesomeIcon icon={faArrowRight} className='ml-4' />
-                        </button>
-                    </div>
+                    <button
+                        type="button"
+                        className="inline-flex w-full items-center justify-center rounded-md bg-sky-300 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-orange-400"
+                    >
+                        Create Account{" "}
+                        <FontAwesomeIcon icon={faArrowRight} className='ml-4' />
+                    </button>
                 </div>
+            </div>
+                
         </section>
 
     )

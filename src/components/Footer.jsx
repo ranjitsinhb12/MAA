@@ -1,15 +1,11 @@
 import React from 'react'
-
+import {Logo} from './index'
 function Footer() {
     return (
         <footer className="w-full">
-            <div className="flex items-center justify-between shadow-inner px-4">
-                <div className="inline-flex items-center">
-                <img
-                className=" h-20 w-20 justify-start"
-                src="maa_logo_light.png"
-                alt=""
-            /> 
+            <div className="flex flex-col sm:flex-row items-center justify-between shadow-inner px-4">
+                <div className=" sm:inline-flex items-center">               
+                    <Logo className="h-20 w-20 justify-start" alt="Footer-Logo" />
                 </div>
                 <div className='text-sm font-medium text-gray-500 dark:text-sky-300'> Developed by Ranjitsinh Chauhan</div>
                 <div className="">

@@ -1,15 +1,7 @@
-import {Link, useNavigate} from 'react-router-dom'
-import useLogout from '../hooks/useLogout'
-import {Header, Footer, TopNav} from './'
+import {Link} from 'react-router-dom'
+
 
 function Home() {
-    const logout = useLogout()
-    const navigate = useNavigate()
-
-    const signOut = async ()=>{
-        await logout()
-      
-    }
     return (
         <>
            <Link to="/register">Register</Link> 
@@ -18,9 +10,6 @@ function Home() {
            <br />
            <Link to="/admin">Admin</Link>
            <br />
-            <button onClick={signOut}>Sign Out</button>
-            
-
         </>
     )
 }
