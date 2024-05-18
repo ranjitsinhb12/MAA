@@ -13,7 +13,7 @@ function Input({
                 { label }
             </label>
             }
-            <input type={type} className={`text-gray-600 dark:text-white flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50${className}`} ref={ref} {...props} id={props.id} />
+            <input type={type} className={`text-gray-600 dark:text-white flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50${className}`}  {...props} id={props.id} />
         </div>
     )
 }

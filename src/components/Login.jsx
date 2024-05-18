@@ -5,9 +5,11 @@ import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight} from '@fortawesome/free-solid-svg-icons'
 import{Logo} from './index'
+import useTheme from '../hooks/useTheme';
 
 function Login() {
-  const {setAuth, persist, setPersist} = useAuth()
+  const {auth, setAuth, persist, setPersist} = useAuth()
+  const {themeMode} = useTheme()
   const navigate = useNavigate()
   const location = useLocation()
   const from = location?.state?.from?.pathname || "/home"
@@ -41,7 +43,8 @@ function Login() {
       console.log(JSON.stringify(response?.data?.data))
       const accessToken = response?.data?.data?.accessToken
       const roles = response?.data?.data?.user?.RoleId
-      setAuth({user, roles, accessToken})
+      const logInUser = response?.data?.data?.user
+      setAuth({user: logInUser, roles, accessToken})
       setUserName('')
       setPassword('')
       navigate(from, {replace: true})
@@ -71,6 +74,12 @@ function Login() {
     useEffect(()=>{
       localStorage.setItem("persist", persist)
     },[persist])
+
+    useEffect(()=>{
+      const selector = document.querySelector('html').classList
+        selector.remove('light', 'dark', 'designer')
+        selector.add(themeMode)
+    },[themeMode])
 
     return (
        

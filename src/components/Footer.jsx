@@ -1,9 +1,10 @@
 import React from 'react'
-import {Logo} from './index'
+import {Logo, Container} from './index'
 function Footer() {
     return (
-        <footer className="w-full">
-            <div className="flex flex-col sm:flex-row items-center justify-between shadow-inner px-4">
+        <footer className="w-full shadow-inner">
+            <Container>
+            <div className="flex flex-1 flex-col sm:flex-row items-center justify-between px-4">
                 <div className=" sm:inline-flex items-center">               
                     <Logo className="h-20 w-20 justify-start" alt="Footer-Logo" />
                 </div>
@@ -12,6 +13,7 @@ function Footer() {
                 <p className="text-sm font-medium text-gray-500 dark:text-sky-300">© 2024 Maa. All rights reserved.</p>
                 </div>
             </div>
+            </Container>
             
         </footer>
     )
