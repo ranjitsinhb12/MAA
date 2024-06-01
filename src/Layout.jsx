@@ -1,10 +1,10 @@
 import React from 'react'
 import { Footer, Header , TopNav} from './components'
 import { Outlet } from 'react-router-dom'
-import useTheme from './hooks/useTheme'
+import { useSelector } from 'react-redux'
 
 function Layout() {
-    const {themeMode} = useTheme()
+    const themeMode = useSelector((state) => state.theme.themeMode)
     return (
         <>
             <div className="grid grid-cols-12 sm:grid-rows-12 gap-0 h-screen ">

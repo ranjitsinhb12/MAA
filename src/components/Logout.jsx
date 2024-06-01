@@ -5,6 +5,7 @@ import {faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
 function Logout() {
     const logout = useLogout()
+    
     const signOut = async ()=>{
         await logout()
       

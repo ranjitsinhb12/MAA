@@ -1,6 +1,5 @@
 import {Link} from 'react-router-dom'
 import {Container} from './index'
-import useAuth from '../hooks/useAuth'
 import Users from './Users'
 import Radio from './form/Radio'
 import Upload from './form/Upload'

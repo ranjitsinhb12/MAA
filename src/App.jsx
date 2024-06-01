@@ -1,6 +1,16 @@
-import {Login, Register, Missing, RequireAuth, Home, Unauthorised, Profile, Admin, PersistLogin} from "./components/index"
+import {Login,
+   Register,
+    Missing, 
+    RequireAuth, 
+    Home, 
+    Unauthorised, 
+    Profile, 
+    Admin, 
+    PersistLogin
+} from "./components/index"
 import {Routes, Route} from 'react-router-dom'
 import Layout from "./Layout"
+
 
 
 function App() {

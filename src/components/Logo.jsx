@@ -1,11 +1,10 @@
-import React from 'react'
-import useTheme from '../hooks/useTheme'
+import { useSelector } from "react-redux"
 
 function Logo({
     className="",
     ...props
 }, ref) {
-   const {themeMode} = useTheme()
+    const themeMode = useSelector((state) => state.theme.themeMode)
    let imageSource
    if(themeMode == 'dark'){
         imageSource = '/maa_logo_dark.png'

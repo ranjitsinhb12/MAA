@@ -2,22 +2,20 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import { AuthProvider } from './contexts/AuthProvider.jsx'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import { ThemeProvider } from './contexts/ThemeProvider.jsx'
+import { Provider } from 'react-redux'
+import { store } from './app/store.js'
 
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 
     <BrowserRouter>
-    <ThemeProvider>
-    <AuthProvider>
+    <Provider store={store}>
       <Routes>
         <Route path="/*" element={<App />} />
       </Routes>
-    </AuthProvider>
-    </ThemeProvider>
+    </Provider>
     </BrowserRouter>
 
 )

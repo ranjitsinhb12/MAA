@@ -1,27 +1,33 @@
 import { useEffect } from "react"
-import useTheme from "../hooks/useTheme"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faLightbulb } from '@fortawesome/free-solid-svg-icons'
 import {Container} from "./index"
+import { useSelector, useDispatch } from "react-redux"
+import { darkTheme, lightTheme } from "../features/theme/themeSlice"
 
 function TopNav() {
-    const {themeMode, setThemeMode } = useTheme()
+    ///const {themeMode, setThemeMode } = useTheme()
+
+    const themeMode = useSelector((state) => state.theme.themeMode)
+    const dispatch = useDispatch()
+
+
     useEffect(()=>{
         localStorage.setItem("themeMode", themeMode)
-    },[themeMode])
 
-    // actual change in theme
-
-    useEffect(()=>{
         const selector = document.querySelector('html').classList
-        selector.remove('light', 'dark', 'designer')
+        selector.remove('light', 'dark')
         selector.add(themeMode)
-        
+
     },[themeMode])
+
+
 
     const handleTheme = (e)=>{
        const darkModeStatus = e.currentTarget.checked
-       darkModeStatus ? setThemeMode('dark') : setThemeMode('light')
+       darkModeStatus ? 
+        dispatch(darkTheme())
+         : dispatch(lightTheme())
 
     }
 

@@ -14,14 +14,11 @@ function Users() {
         
         ;(async()=>{
             try {
-                const response = await axiosPrivate.get('/api/v1/user/all-users',{
+                const response = await axiosPrivate.get('api/v1/user/all-users',{
                     signal: controller.signal
                 })
-                console.log(response?.data)
                 isMounted && setUsers(response?.data?.data)
-
             } catch (err) {
-                console.error(err)
                 navigate('/', {state: {from: location}, replace: true})
             }
         })()

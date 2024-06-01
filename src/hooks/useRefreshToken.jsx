@@ -1,23 +1,20 @@
 import axios from "../api/axios"
-import useAuth from "./useAuth"
+import { setCredentials } from "../features/auth/authSlice"
+import { useDispatch } from "react-redux"
 
 function useRefreshToken() {
-    const { setAuth } = useAuth()
+    const dispatch = useDispatch()
     
      const refresh = async()=>{
-         const response = await axios.get('/api/v1/user/refresh-token',{
+         const response = await axios.get('api/v1/user/refresh-token',{
              withCredentials: true,
          })
-         setAuth(prev => {
-            console.log(JSON.stringify(prev))
-            console.log(response.data?.data.user)
-    
-            return {
-                ...prev,
-                user: response?.data?.data?.user,
-                roles: response?.data?.data?.roles,
-                accessToken : response?.data?.data?.accessToken}
-        })
+         const logInUser = response?.data?.data?.user
+         const roles = response?.data?.data?.roles
+         const accessToken = response?.data?.data?.accessToken
+         dispatch(setCredentials({user: logInUser, roles, accessToken}))
+
+         
         return response.data.data.accessToken
         
          

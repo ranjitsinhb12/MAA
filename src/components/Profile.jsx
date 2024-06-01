@@ -10,7 +10,7 @@ function Profile() {
     useEffect(()=>{
             try {
                 ;(async() => {
-                const response = await axios.get('/api/v1/user/current-user', {
+                const response = await axios.get('api/v1/user/current-user', {
                     withCredentials: true
                 })
                 setCurrentUsers(response?.data?.data.FullName)

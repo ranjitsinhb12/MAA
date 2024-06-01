@@ -1,12 +1,18 @@
 
 import { useEffect } from "react"
-import useAuth from "../hooks/useAuth"
+//import useAuth from "../hooks/useAuth"
+
+import { selectCurrentUser, selectCurrentToken, selectCurrentRoles } from "../features/auth/authSlice"
+import { useSelector } from "react-redux"
 
 
 function Avatar() {
-    const {auth} = useAuth()
-    const avatar = auth?.user?.Avatar
-    const fullName = auth?.user?.FullName
+    //const {auth} = useAuth()
+    const user = useSelector(selectCurrentUser)
+    const avatar = user?.Avatar
+    const fullName = user?.FullName
+    const token = useSelector(selectCurrentToken)
+    const role = useSelector(selectCurrentRoles)
     return (
         <div className="flex flex-col">
             <img

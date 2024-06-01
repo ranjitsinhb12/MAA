@@ -1,24 +1,28 @@
 import {useRef, useState, useEffect} from 'react'
-import useAuth from '../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios'
+import axios from '../api/axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight} from '@fortawesome/free-solid-svg-icons'
 import{Logo} from './index'
-import useTheme from '../hooks/useTheme';
+import { useDispatch } from 'react-redux';
+import { setCredentials,  togglePersist} from '../features/auth/authSlice';
+import { useSelector } from 'react-redux';
+
 
 function Login() {
-  const {auth, setAuth, persist, setPersist} = useAuth()
-  const {themeMode} = useTheme()
+  
+  const themeMode = useSelector((state) => state.theme.themeMode)
   const navigate = useNavigate()
   const location = useLocation()
   const from = location?.state?.from?.pathname || "/home"
    const userRef = useRef()
    const errRef = useRef()
-
    const [user, setUserName] = useState('')
    const [password, setPassword] = useState('')
    const [errMsg, setErrMsg] = useState('')
+   const persist = useSelector((state) => state.auth.persist)
+    const dispatch = useDispatch()
+
 
    useEffect(() => {
     userRef.current;
@@ -30,7 +34,7 @@ function Login() {
   const handleSubmit = async (e)=>{
     e.preventDefault()
     try {
-      const response = await axios.post('/api/v1/user/login',
+      const response = await axios.post('api/v1/user/login',
         {
         UserName: user,
         UserPassword: password
@@ -40,11 +44,12 @@ function Login() {
         {'Content-Type' : 'application/json'},
         withCredentials: true
       })
-      console.log(JSON.stringify(response?.data?.data))
       const accessToken = response?.data?.data?.accessToken
       const roles = response?.data?.data?.user?.RoleId
       const logInUser = response?.data?.data?.user
-      setAuth({user: logInUser, roles, accessToken})
+
+      dispatch(setCredentials({user: logInUser, roles, accessToken}))
+      ///setAuth({user: logInUser, roles, accessToken})
       setUserName('')
       setPassword('')
       navigate(from, {replace: true})
@@ -67,20 +72,21 @@ function Login() {
     }
   }
 
-    const togglePersist = ()=> {
-      setPersist(prev => !prev)
-    }
+    
 
     useEffect(()=>{
-      localStorage.setItem("persist", persist)
+     localStorage.setItem("persist", persist)
     },[persist])
 
     useEffect(()=>{
       const selector = document.querySelector('html').classList
-        selector.remove('light', 'dark', 'designer')
+        selector.remove('light', 'dark')
         selector.add(themeMode)
     },[themeMode])
 
+    const handlePersist = (e)=>{
+       dispatch(togglePersist())
+    }
     return (
        
         <section className=" bg-neutral-200 dark:bg-gray-950 overflow-auto">
@@ -136,8 +142,9 @@ function Login() {
                         className=" accent-sky-300"
                         type="checkbox"
                         id='persist'
-                        onChange={togglePersist}
+                        onChange={handlePersist}
                         checked={persist}
+
                       />
                       <label htmlFor="persist" className="text-base font-medium text-gray-600 dark:text-white">
                         {" "}

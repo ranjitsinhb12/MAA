@@ -1,12 +1,14 @@
 import { Outlet } from "react-router-dom"
 import { useState, useEffect} from 'react'
 import useRefreshToken from "../hooks/useRefreshToken"
-import useAuth from "../hooks/useAuth"
+import { useSelector } from "react-redux"
 
 function PersistLogin() {
     const [isLoading, setIsLoading] = useState(true)
     const refresh = useRefreshToken()
-    const { auth, persist} = useAuth()
+   /// const { auth, persist} = useAuth()
+    const accessToken = useSelector((state) => state.auth.accessToken)
+    const persist = useSelector((state) => state.auth.persist)
 
     useEffect(()=>{
         let isMounted = true
@@ -21,7 +23,7 @@ function PersistLogin() {
             }
         }
 
-        !auth?.accessToken ? verifyRefreshToken() : setIsLoading(false)
+        !accessToken ? verifyRefreshToken() : setIsLoading(false)
 
         return ()=> isMounted = false;
     }, [])
