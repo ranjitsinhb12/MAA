@@ -4,12 +4,17 @@ import Users from './Users'
 import Radio from './form/Radio'
 import Upload from './form/Upload'
 import Checkbox from './form/Checkbox'
+import SetLocation from './SetLocation'
+import { selectCurrentLocation } from '../features/auth/authSlice'
+import { useSelector } from 'react-redux'
 
 
 function Home() {
     return (
 
         <Container>
+          {useSelector(selectCurrentLocation)}
+         
            <Link to="/register">Register</Link> 
            <br />
            <Link to="/profile">Profile</Link>

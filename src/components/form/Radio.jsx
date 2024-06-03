@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {forwardRef} from 'react'
 
 function Radio({
     label,
@@ -18,4 +18,4 @@ function Radio({
     )
 }
 
-export default React.forwardRef(Radio)
+export default forwardRef(Radio)

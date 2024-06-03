@@ -1,6 +1,6 @@
 import {  Navigate, Outlet, useLocation } from "react-router-dom"
 import { useSelector } from "react-redux"
-import { selectCurrentToken, selectCurrentRoles } from "../features/auth/authSlice"
+import { selectCurrentToken } from "../features/auth/authSlice"
 
 const RequireAuth = ({allowedRoles})=>{
   ///  const {auth} = useAuth()
@@ -8,7 +8,7 @@ const RequireAuth = ({allowedRoles})=>{
    /// let authRole  = auth?.roles
 
     const token = useSelector(selectCurrentToken)
-    const role = useSelector(selectCurrentRoles)
+    const role = useSelector((state) => state?.auth?.user?.RoleId)
     return (
         role && role <= allowedRoles ?
             <Outlet /> :

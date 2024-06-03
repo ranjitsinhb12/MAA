@@ -18,7 +18,7 @@ function Logo({
               className={`${className}`} 
               src={`${imageSource}`}
               alt="Logo"
-            />
+        />
           
         </>
     )

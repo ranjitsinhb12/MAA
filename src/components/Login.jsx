@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from '../api/axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight} from '@fortawesome/free-solid-svg-icons'
-import{Logo} from './index'
+import{Logo, SetLocation} from './index'
 import { useDispatch } from 'react-redux';
 import { setCredentials,  togglePersist} from '../features/auth/authSlice';
 import { useSelector } from 'react-redux';
@@ -44,15 +44,18 @@ function Login() {
         {'Content-Type' : 'application/json'},
         withCredentials: true
       })
+      
+      
       const accessToken = response?.data?.data?.accessToken
-      const roles = response?.data?.data?.user?.RoleId
       const logInUser = response?.data?.data?.user
+      const locationId = response?.data?.data?.location
 
-      dispatch(setCredentials({user: logInUser, roles, accessToken}))
-      ///setAuth({user: logInUser, roles, accessToken})
+      dispatch(setCredentials({user: logInUser, accessToken, location: locationId }))
+      
       setUserName('')
       setPassword('')
       navigate(from, {replace: true})
+      
     } catch (err) {
       if(!err?.response){
         setErrMsg(' No server response ')
@@ -89,9 +92,9 @@ function Login() {
     }
     return (
        
-        <section className=" bg-neutral-200 dark:bg-gray-950 overflow-auto">
+        <section className=" bg-neutral-200 dark:bg-gray-950 h-screen border-collapse overflow-auto md:overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 h-screen">
-          <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
+          <div className="flex items-center justify-center px-4 py-4 sm:px-6 sm:py-16 lg:px-8 md:py-8 ">
             <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
             <p  className={ `${ errMsg ? ' bg-pink-200 p-4 text-red-500 m-2' : 'offscreen'} `} aria-live="assertive">{errMsg}</p>
               <h2 className="text-3xl font-bold leading-tight text-orange-400 sm:text-2xl">
@@ -164,8 +167,8 @@ function Login() {
               </form>
             </div>
           </div>
-          <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
-            <Logo className="mx-auto h-svh w-full rounded-md object-contain" />
+          <div className="flex items-center justify-start px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
+            <Logo className="mx-auto object-contain" />
           </div>
         </div>
       </section>

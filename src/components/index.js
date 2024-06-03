@@ -20,6 +20,7 @@ import Select from './form/Select'
 import Upload from "./form/Upload";
 import Radio from "./form/Radio";
 import Checkbox from "./form/Checkbox";
+import SetLocation from "./SetLocation";
 
 
 
@@ -46,6 +47,7 @@ export{
     Upload,
     Radio,
     Checkbox,
+    SetLocation,
 
 
 }
