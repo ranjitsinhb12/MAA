@@ -5,7 +5,7 @@ import { selectCurrentUser, updateAvatar} from '../features/auth/authSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from '../api/axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSpinner} from '@fortawesome/free-solid-svg-icons'
+import { faSpinner, faCircleUser} from '@fortawesome/free-solid-svg-icons'
 
 
 function UploadAvatar() {
@@ -19,6 +19,17 @@ function UploadAvatar() {
     const profileImg = useSelector((state) => state?.auth?.user?.Avatar)
     const [isLoading, setIsLoading] = useState(false)
     const [loadingImg, setLoadingImg] = useState('')
+
+    let avatarImg
+    if(!user?.Avatar){
+        avatarImg = <FontAwesomeIcon icon={faCircleUser} className=' h-16 w-16 rounded-full border-4 border-double border-orange-400 overflow-hidden' />
+    }else{
+        avatarImg = <img
+        className="inline-block h-20 w-20 rounded-full border-4 border-double border-orange-400 "
+        src={profileImg}
+        alt=""
+        />
+    }
 
     useEffect(()=>{
         !isLoading ? 
@@ -62,11 +73,7 @@ function UploadAvatar() {
     return (
         <> 
             <div className='flex flex-col items-center mb-7'>
-                <img
-                    className="inline-block h-20 w-20 rounded-full border-4 border-double border-orange-400 "
-                    src={profileImg}
-                    alt="Profile Photo"
-                />
+                {avatarImg}
                 {profileName}
             </div>
             <div className='px-6'>

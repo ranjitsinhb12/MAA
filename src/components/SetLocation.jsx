@@ -30,6 +30,13 @@ function SetLocation() {
     }, [currentlyLogin])
 
    
+    const locationRadio = locationArray.map((location, i) =>(
+                                
+        <div key={i} className=" px-12">
+            <input   type = "radio" value = {location.LocationId} {...register("loginLocation")} /> {location.LocationName}
+        </div>                               
+
+    ))
 
     const selectLocation = (data) =>{
         setErrMsg('')
@@ -76,15 +83,7 @@ function SetLocation() {
                             <h2 className="px-8"> Location to Login:</h2>
                             <form>
                             
-                            {
-                            locationArray.map((location, i) =>(
-                                
-                                <div key={i} className=" px-12">
-                                    <input   type = "radio" value = {location.LocationId} {...register("loginLocation")} /> {location.LocationName}
-                                </div>                               
-
-                            ))
-                        }
+                        {locationRadio}
                         
                             <div className=' flex flex-col sm:flex-row mb-4 mt-10 sm:mt-6'>
                                
