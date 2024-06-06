@@ -30,7 +30,7 @@ function SetLocation() {
     }, [currentlyLogin])
 
    
-    const locationRadio = locationArray.map((location, i) =>(
+    const locationRadio = locationArray?.map((location, i) =>(
                                 
         <div key={i} className=" px-12">
             <input   type = "radio" value = {location.LocationId} {...register("loginLocation")} /> {location.LocationName}
