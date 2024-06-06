@@ -32,7 +32,7 @@ function TopNav() {
     }
 
     return (
-        <nav className="w-full shadow-md">
+        <nav className="w-full shadow-md border-1 border-gray-200">
             <Container>
                 <div className="flex flex-row p-4 ">
                     <div className=" sm:basis-1/2 dark:text-gray-300 text-gray-600"> Adelaide </div>

@@ -17,7 +17,7 @@ import { allRoles } from '../features/register/roleSlice'
                  })
                  isMounted && dispatch(allRoles({roles: response?.data?.data})) 
             } catch (error) {
-                console.log(error.message)
+                console.log(error.status)
             }
 
         })()

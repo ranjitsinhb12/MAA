@@ -3,6 +3,7 @@ import { faGear, faChartSimple, faFileExport, faRightFromBracket } from '@fortaw
 import { Link} from 'react-router-dom'
 import {Logo, Logout} from './index'
 import Avatar from './Avatar'
+
 function Header() {
     return (
     

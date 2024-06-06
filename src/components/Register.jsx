@@ -31,6 +31,11 @@ function Register({user}) {
     const company = logedInUser?.CompanyId
     const [locationError, setLocationError] = useState('')
 
+    const roleDrowpdown = roles?.length ?
+                                roles?.map((role, i)=>(
+                                ( <option className=' bg-sky-300 text-white p-8 border-2 border-red-500 cursor-pointer' value ={role.RoleId} key={i}>{role.RoleName.toUpperCase()}</option> )
+                                )) : <option>No Role</option>
+
     
     const {register, handleSubmit, setValue, reset, control, getValues, formState: { errors },} = useForm({
         defaultValues:{
@@ -267,11 +272,7 @@ function Register({user}) {
                             >
                                 <option value= "" className=' bg-sky-300 text-white p-8 border-2 border-red-500 cursor-pointer'>-- Select Role --</option>
                                 {
-                                    roles?.length ?
-                                            roles?.map((role, i)=>(
-                                            ( <option className=' bg-sky-300 text-white p-8 border-2 border-red-500 cursor-pointer' value ={role.RoleId} key={i}>{role.RoleName.toUpperCase()}</option> )
-                                            )) : <option>No Role</option>
-                                        
+                                    roleDrowpdown     
                                 }
                             </select>
                             {errors.RoleId?.type === "required" && (

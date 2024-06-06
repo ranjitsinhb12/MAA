@@ -21,6 +21,8 @@ import Upload from "./form/Upload";
 import Radio from "./form/Radio";
 import Checkbox from "./form/Checkbox";
 import SetLocation from "./SetLocation";
+import UploadAvatar from "./UploadAvatar";
+
 
 
 
@@ -48,6 +50,8 @@ export{
     Radio,
     Checkbox,
     SetLocation,
+    UploadAvatar,
+
 
 
 }

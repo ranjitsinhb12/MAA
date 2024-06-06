@@ -11,6 +11,7 @@ const authSlice = createSlice({
             state.user = user
             state.token = accessToken
             state.location = location
+            
         },
         logOut:(state, action)=>{
             state.user = null
@@ -25,12 +26,17 @@ const authSlice = createSlice({
         setLocation: (state, action) =>{
             const { userLocation } = action.payload
             state.location = userLocation
+        },
+        updateAvatar: (state, action) =>{
+            const { avatar } = action.payload
+            state.user.Avatar = avatar
         }
+
        
     }
 })
 
-export const { setCredentials, logOut, togglePersist, setLocation} = authSlice.actions
+export const { setCredentials, logOut, togglePersist, setLocation, updateAvatar} = authSlice.actions
 
 export default authSlice.reducer
 
