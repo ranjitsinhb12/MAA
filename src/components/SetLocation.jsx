@@ -38,16 +38,6 @@ function SetLocation() {
 
     ))
 
-    const selectLocation = (data) =>{
-        setErrMsg('')
-        const LocationId = data?.loginLocation
-        if(!LocationId){
-            setErrMsg("Please select One Location!")
-        }
-        dispatch(setLocation({userLocation: LocationId}))
-        
-    }
-
     const setDefault = async(data) =>{
         setErrMsg('')
         const LocationId = data?.loginLocation

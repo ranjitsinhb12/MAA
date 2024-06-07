@@ -22,6 +22,7 @@ import Radio from "./form/Radio";
 import Checkbox from "./form/Checkbox";
 import SetLocation from "./SetLocation";
 import UploadAvatar from "./UploadAvatar";
+import LocationToSelect from "./LocationToSelect";
 
 
 
@@ -51,6 +52,7 @@ export{
     Checkbox,
     SetLocation,
     UploadAvatar,
+    LocationToSelect
 
 
 

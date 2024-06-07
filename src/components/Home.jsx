@@ -5,15 +5,17 @@ import Radio from './form/Radio'
 import Upload from './form/Upload'
 import Checkbox from './form/Checkbox'
 import SetLocation from './SetLocation'
-import { selectCurrentLocation } from '../features/auth/authSlice'
+import { selectCurrentLocation, selectCurrentUser } from '../features/auth/authSlice'
 import { useSelector } from 'react-redux'
 
 
 function Home() {
+     console.log(useSelector(selectCurrentUser))
     return (
 
         <Container>
-          {useSelector(selectCurrentLocation)}
+          {useSelector(selectCurrentLocation)} <br />
+          
          
            <Link to="/register">Register</Link> 
            <br />

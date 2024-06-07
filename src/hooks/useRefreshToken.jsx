@@ -1,7 +1,8 @@
 import axios from "../api/axios"
-import { setCredentials } from "../features/auth/authSlice"
-import { useDispatch } from "react-redux"
+import { setCredentials, selectCurrentLocation } from "../features/auth/authSlice"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useLocation } from "react-router-dom"
+
 
 function useRefreshToken() {
     const dispatch = useDispatch()
@@ -15,6 +16,8 @@ function useRefreshToken() {
             const logInUser = response?.data?.data?.user
             const accessToken = response?.data?.data?.accessToken
             const locationId = response?.data?.data?.location
+
+            
             
             dispatch(setCredentials({user: logInUser, accessToken, location: locationId}))
    

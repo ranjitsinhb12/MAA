@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faLightbulb } from '@fortawesome/free-solid-svg-icons'
-import {Container} from "./index"
+import {Container, LocationToSelect,} from "./index"
 import { useSelector, useDispatch } from "react-redux"
 import { darkTheme, lightTheme } from "../features/theme/themeSlice"
 
@@ -35,7 +35,7 @@ function TopNav() {
         <nav className="w-full shadow-md border-1 border-gray-200">
             <Container>
                 <div className="flex flex-row p-4 ">
-                    <div className=" sm:basis-1/2 dark:text-gray-300 text-gray-600"> Adelaide </div>
+                    <div className=" sm:basis-1/2 dark:text-gray-300 text-gray-600"> <LocationToSelect /> </div>
                     <div className=" justify-between hidden sm:block sm:basis-1/2 text-right items-center">
                     <span className=" mr-2 font-medium text-gray-800 dark:text-gray-400 relative inline-flex items-center" >{themeMode == 'dark' && <FontAwesomeIcon icon={faLightbulb} size="lg" className=" text-yellow-200" />}
                     </span>
