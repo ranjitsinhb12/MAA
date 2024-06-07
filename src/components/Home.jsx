@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux'
 
 
 function Home() {
-     console.log(useSelector(selectCurrentUser))
+     
     return (
 
         <Container>

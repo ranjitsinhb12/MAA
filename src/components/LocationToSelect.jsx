@@ -19,7 +19,6 @@ function LocationToSelect() {
     const currentLocation = useSelector(selectCurrentLocation)
 
     const setDefault = async(e) =>{
-        console.log(e.target.value)
         const LocationId = e.target.value
         if(!LocationId){
             setErrMsg("Please select One Location!")
@@ -46,10 +45,11 @@ function LocationToSelect() {
             {           
                     
                 locationArray?.length ?
-                        <select className=" text-green-700" 
+                        <select className=' p-2 text-orange-400 bg-gray-100 dark:bg-gray-800'
                             name = "loginLocation" 
-                            value={currentLocation} 
+                            defaultValue={currentLocation} 
                             onChange={setDefault}
+
                             >
                             {locationArray?.map((location, i) =>(
                                 <option key={i} value ={location.LocationId}   

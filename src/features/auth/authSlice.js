@@ -30,13 +30,17 @@ const authSlice = createSlice({
         updateAvatar: (state, action) =>{
             const { avatar } = action.payload
             state.user.Avatar = avatar
+        },
+        updateCompanyId: (state, action) =>{
+            const {companyId} = action.payload
+            state.user.CompanyId = companyId
         }
 
        
     }
 })
 
-export const { setCredentials, logOut, togglePersist, setLocation, updateAvatar} = authSlice.actions
+export const { setCredentials, logOut, togglePersist, setLocation, updateAvatar, updateCompanyId} = authSlice.actions
 
 export default authSlice.reducer
 

@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom"
 import { useState, useEffect, useRef} from 'react'
 import { useSelector, useDispatch } from "react-redux"
-import { selectCurrentLocation, setLocation, selectCurrentToken } from "../features/auth/authSlice"
+import { selectCurrentLocation, setLocation, selectCurrentUser } from "../features/auth/authSlice"
 import useSelectLocation from "../hooks/useSelectLocation"
-import {Radio, Container, Button} from './index'
+import {Radio, Container, Button, AllCompany} from './index'
 import { allLocations } from "../features/auth/userLocationSlice"
 import {useForm} from 'react-hook-form'
 import { useNavigate, useLocation } from "react-router-dom"
@@ -12,7 +12,7 @@ import axios from "../api/axios"
 function SetLocation() {
     
     const userCurrentLocation = useSelector(selectCurrentLocation)
-    const currentlyLogin = useSelector(selectCurrentToken)
+    const currentlyLogin = useSelector(selectCurrentUser)
     const allLocations = useSelectLocation()
     const locations = useSelector((state) => state.userAllLocation.userLocation)
     const locationArray = locations?.Locations
@@ -29,9 +29,10 @@ function SetLocation() {
         }
     }, [currentlyLogin])
 
-   
-    const locationRadio = locationArray?.map((location, i) =>(
-                                
+    const user = useSelector(selectCurrentUser)
+    const roleId = user?.RoleId
+
+    const locationRadio = locationArray?.map((location, i) =>(                     
         <div key={i} className=" px-12">
             <input   type = "radio" value = {location.LocationId} {...register("loginLocation")} /> {location.LocationName}
         </div>                               
@@ -63,7 +64,8 @@ function SetLocation() {
 
     return (
         <>
-            {           
+           
+            {     
                     !userCurrentLocation ?
                         locationArray?.length ?
                             (<div className=" w-full p-4">
@@ -72,8 +74,8 @@ function SetLocation() {
                             </p>
                             <h2 className="px-8"> Location to Login:</h2>
                             <form>
-                            
-                        {locationRadio}
+                            {(roleId === 1) && <AllCompany />}
+                            {locationRadio}
                         
                             <div className=' flex flex-col sm:flex-row mb-4 mt-10 sm:mt-6'>
                                

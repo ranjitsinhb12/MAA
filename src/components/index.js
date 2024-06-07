@@ -23,6 +23,7 @@ import Checkbox from "./form/Checkbox";
 import SetLocation from "./SetLocation";
 import UploadAvatar from "./UploadAvatar";
 import LocationToSelect from "./LocationToSelect";
+import AllCompany from "./AllCompany";
 
 
 
@@ -52,7 +53,8 @@ export{
     Checkbox,
     SetLocation,
     UploadAvatar,
-    LocationToSelect
+    LocationToSelect,
+    AllCompany
 
 
 
