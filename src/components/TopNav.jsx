@@ -4,7 +4,7 @@ import { faMoon, faLightbulb } from '@fortawesome/free-solid-svg-icons'
 import {AllCompany, Container, LocationToSelect,} from "./index"
 import { useSelector, useDispatch } from "react-redux"
 import { darkTheme, lightTheme } from "../features/theme/themeSlice"
-import { selectCurrentUser } from "../features/auth/authSlice"
+import { selectCurrentUser, isLocationMatch } from "../features/auth/authSlice"
 
 function TopNav() {
     ///const {themeMode, setThemeMode } = useTheme()
@@ -12,6 +12,7 @@ function TopNav() {
     const themeMode = useSelector((state) => state.theme.themeMode)
     const dispatch = useDispatch()
     const user = useSelector(selectCurrentUser)
+    const currentLocationMatch = useSelector(isLocationMatch)
     const roleId = user?.RoleId
 
     useEffect(()=>{
@@ -39,11 +40,12 @@ function TopNav() {
                 <div className="flex flex-row p-4 ">
                     <div className=" flex sm:basis-1/2 dark:text-gray-300 text-gray-600 justify-between">
                         <div>
-                        <LocationToSelect /> 
+                         <AllCompany />
                         </div>
                         <div>
-                        {roleId === 1 ? <AllCompany />: ""}
+                        <LocationToSelect /> 
                         </div>
+                        
                     </div>
                     <div className=" justify-between hidden sm:block sm:basis-1/2 text-right items-center">
                     <span className=" mr-2 font-medium text-gray-800 dark:text-gray-400 relative inline-flex items-center" >{themeMode == 'dark' && <FontAwesomeIcon icon={faLightbulb} size="lg" className=" text-yellow-200" />}

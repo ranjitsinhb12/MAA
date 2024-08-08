@@ -16,11 +16,14 @@ function useRefreshToken() {
             const logInUser = response?.data?.data?.user
             const accessToken = response?.data?.data?.accessToken
             const locationId = response?.data?.data?.location
-
+            
+            let defaultLocation = false
+            if(locationId){
+                defaultLocation = true
+            }
+            dispatch(setCredentials({user: logInUser, accessToken, location: locationId, isDefaultLocation: defaultLocation}))
             
             
-            dispatch(setCredentials({user: logInUser, accessToken, location: locationId}))
-   
            return response.data.data.accessToken
          } catch (error) {
             navigate('/', {state: {from: location}, replace: true})

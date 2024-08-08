@@ -24,6 +24,7 @@ import SetLocation from "./SetLocation";
 import UploadAvatar from "./UploadAvatar";
 import LocationToSelect from "./LocationToSelect";
 import AllCompany from "./AllCompany";
+import AddCompany from "./AddCompany";
 
 
 
@@ -54,7 +55,8 @@ export{
     SetLocation,
     UploadAvatar,
     LocationToSelect,
-    AllCompany
+    AllCompany,
+    AddCompany
 
 
 

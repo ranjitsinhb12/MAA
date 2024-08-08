@@ -8,10 +8,12 @@ import {Login,
     Admin, 
     PersistLogin,
     SetLocation,
-    UploadAvatar
+    UploadAvatar,
+    AddCompany
 } from "./components/index"
 import {Routes, Route} from 'react-router-dom'
 import Layout from "./Layout"
+
 
 
 
@@ -48,6 +50,7 @@ function App() {
                 {/* Only Admin User Routes */}
                 <Route element={<RequireAuth allowedRoles={ROLES[1001]} />}>
                   <Route path="admin" element={<Admin />} />
+                  <Route path="addcompany" element={<AddCompany />} /> 
                 </Route>
                 { /* Manager and Above user Route */}
                 <Route element={<RequireAuth allowedRoles={ROLES[1003]} />}>

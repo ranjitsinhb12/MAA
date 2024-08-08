@@ -14,9 +14,7 @@ function Home() {
     return (
 
         <Container>
-          {useSelector(selectCurrentLocation)} <br />
-          
-         
+          Location: {useSelector(selectCurrentLocation)} <br />
            <Link to="/register">Register</Link> 
            <br />
            <Link to="/profile">Profile</Link>

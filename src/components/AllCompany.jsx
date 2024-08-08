@@ -1,33 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { selectCurrentUser, updateCompanyId } from '../features/auth/authSlice'
+import { selectCurrentUser, updateCompanyId, setLocation } from '../features/auth/authSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import useAxiosPrivate from '../hooks/useAxiosPrivate'
 import axios from '../api/axios'
 
 function AllCompany() {
-
-    //const [isLogedIn, setIsLogedIn] = useState()
     const [company, setCompany] = useState()
     const axiosPrivate = useAxiosPrivate()
     const dispatch = useDispatch()
-
-    // useEffect(()=>{
-    //     setIsLogedIn(useSelector(selectCurrentUser))
-        
-    // },[isLogedIn])
-    const isLogedIn = useSelector(selectCurrentUser)
-    if(!isLogedIn){
-        return false
-    }
-
-    const currentCompany = isLogedIn.CompanyId
     
+
     useEffect(()=>{
         let isMounted = true
         const controller = new AbortController()
         ;(async()=>{
             try {
-                const response = await axiosPrivate.get('/api/v1/company/all-companies',{
+                const response = await axiosPrivate.get('/api/v1/user/all-companies',{
                     signal: controller.signal
                 })
                 isMounted && setCompany(response?.data?.data)
@@ -42,9 +30,15 @@ function AllCompany() {
             controller.abort()
             
         }
-    },[isLogedIn])
+    },[])
+    
+    const isLogedIn = useSelector(selectCurrentUser)
+    if(!isLogedIn){
+        return false
+    }
 
-
+    const currentCompany = isLogedIn.CompanyId
+  
 
     const companyOption = company?.length ?
             company.map((company, i)=>(
@@ -73,11 +67,11 @@ function AllCompany() {
         <select 
             name="selectedCompany"
             onChange={changeCompany}
-            defaultValue={currentCompany}
+            value={currentCompany}
             className=' p-2 text-orange-400 bg-gray-100 dark:bg-gray-800'
         >
            
-            {companyOption}
+           {companyOption}
         </select>
     )
 }

@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight} from '@fortawesome/free-solid-svg-icons'
 import{Logo, SetLocation} from './index'
 import { useDispatch } from 'react-redux';
-import { setCredentials,  togglePersist} from '../features/auth/authSlice';
+import { setCredentials,  togglePersist, locationMatch
+} from '../features/auth/authSlice';
 import { useSelector } from 'react-redux';
 
 
@@ -50,7 +51,12 @@ function Login() {
       const logInUser = response?.data?.data?.user
       const locationId = response?.data?.data?.location
 
-      dispatch(setCredentials({user: logInUser, accessToken, location: locationId }))
+      let defaultLocation = false
+      if(locationId){
+        defaultLocation = true
+      }
+      dispatch(setCredentials({user: logInUser, accessToken, location: locationId, isDefaultLocation: defaultLocation }))
+      
       
       setUserName('')
       setPassword('')

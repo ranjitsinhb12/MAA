@@ -16,5 +16,3 @@ export const {userLocation} = userLocationSlice.actions
 
 export default userLocationSlice.reducer
 
-export const allLocations = (state) => state.userAllLocation.userLocation
-

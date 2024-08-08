@@ -20,7 +20,7 @@ const useSelectLocation = async() => {
                 const response = await axiosPrivate.get('/api/v1/user/all-locations',{
                     signal: controller.signal
                 })
-                isMounted && dispatch(userLocation({userLocation: response?.data?.data}))
+                isMounted && response && dispatch(userLocation({userLocation: response?.data?.data}))
             } catch (err) {
                 navigate('/')
             }
