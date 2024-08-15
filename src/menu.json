@@ -1,0 +1,88 @@
+[
+  {
+    "title": "Jobcard",
+    "roleAllowed": 5,
+    "childrens": [
+      {
+        "title": "Customers",
+        "roleAllowed": 4,
+        "childrens": [
+          {
+            "title": "New Customer",
+            "roleAllowed": 4,
+            "path": "/add-customer"
+          },
+          {
+            "title": "All Customers",
+            "roleAllowed": 4,
+            "path": "/all-customers"
+          }
+        ]
+      },
+      {
+        "title": "Quotation",
+        "roleAllowed": 4,
+        "childrens": [
+          {
+            "title": "New Quote",
+            "roleAllowed": 4,
+            "path": "/add-quote"
+          },
+          {
+            "title": "Pendin Quote",
+            "roleAllowed": 4,
+            "path": "/pending-quote"
+          }
+        ]
+      },
+      {
+        "title": "Jobs",
+        "roleAllowed": 5,
+        "childrens": [
+          {
+            "title": "Pending Jobs",
+            "roleAllowed": 5,
+            "path": "/pending-jobs"
+          },
+          {
+            "title": "Completed Jobs",
+            "roleAllowed": 3,
+            "path": "/completed-jobs"
+          }
+        ]
+      }
+      
+    ]
+  },
+  {
+    "title": "Settings",
+    "roleAllowed": "1",
+    "childrens": [
+      {
+        "title": "Companies",
+        "roleAllowed": "1",
+        "childrens": [
+          {
+            "title": "New Company",
+            "roleAllowed": 1,
+            "path": "/addcompany"
+          },
+          {
+            "title": "All Companies",
+            "roleAllowed": 1,
+            "path": "/all-companies"
+          },
+          {
+            "title": "Locations",
+            "roleAllowed": 1,
+            "path": "/all-locations"
+          }
+        ]
+      },
+      {
+        "title": "Profile",
+        "path": "/edit-profile"
+      }
+    ]
+  }
+]

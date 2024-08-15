@@ -9,7 +9,8 @@ import {Login,
     PersistLogin,
     SetLocation,
     UploadAvatar,
-    AddCompany
+    AddCompany,
+    Settings
 } from "./components/index"
 import {Routes, Route} from 'react-router-dom'
 import Layout from "./Layout"
@@ -45,6 +46,7 @@ function App() {
                   <Route path="home" element={<Home />} />
                   <Route path="profile" element={<Profile />} />
                   <Route path="avatar" element={<UploadAvatar />} />
+                  <Route path="settings" element={<Settings />} />
                 </Route>
 
                 {/* Only Admin User Routes */}

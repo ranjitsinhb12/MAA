@@ -13,6 +13,10 @@ import useLocations from '../hooks/useLocations';
 
 
 
+
+
+
+
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{2,21}$/;
 const PWD_REGEX = /^(?=.[a-z])(?=.*[0-9])(?=.*[!@#%]).{8,24}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -294,7 +298,7 @@ function Register({user}) {
                         <FontAwesomeIcon icon={faArrowRight} className='ml-4' />
                     </Button>
                 </div>
-                
+        
             </div>
             </form>
            

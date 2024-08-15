@@ -25,6 +25,8 @@ import UploadAvatar from "./UploadAvatar";
 import LocationToSelect from "./LocationToSelect";
 import AllCompany from "./AllCompany";
 import AddCompany from "./AddCompany";
+import Settings from "./Settings";
+import Accordion from "./Accordion";
 
 
 
@@ -56,7 +58,9 @@ export{
     UploadAvatar,
     LocationToSelect,
     AllCompany,
-    AddCompany
+    AddCompany,
+    Settings,
+    Accordion
 
 
 

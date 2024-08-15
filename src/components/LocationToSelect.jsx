@@ -42,7 +42,6 @@ function LocationToSelect() {
                 isMounted && setLocations(userLocations)
             } catch (error) {
                 console.log(error?.message)
-                console.log("No Location Found!")
             }
         }
         )()

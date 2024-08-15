@@ -15,7 +15,7 @@ function Logo({
         <>
         <img
             {...props}
-              className={`${className}`} 
+              className={`${className} `} 
               src={`${imageSource}`}
               alt="Logo"
         />
