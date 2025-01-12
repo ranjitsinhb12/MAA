@@ -40,7 +40,7 @@ function Avatar() {
 
 
     return (
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col">
             <div id="outer" >
                 <div id = "showPopup" className=" text-gray-400 cursor-pointer">
                 { avatarImg}

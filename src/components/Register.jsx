@@ -100,11 +100,11 @@ function Register({user}) {
         <p ref={errRef} className={errMsg ? ' border-2 border-red-700 bg-red-300 p-3 text-red-800' : 'offscreen'} aria-live='assertive'>
             {errMsg}
         </p>
-        <p className={successMsg ? ' border-2 border-green-900 bg-green-200 p-3 text-green-950' : 'offscreen'} aria-live='assertive'>
+        <p className={successMsg ? ' border-2 border-green-900 bg-green-200 text-green-950' : 'offscreen'} aria-live='assertive'>
             {successMsg}
         </p>
         <form onSubmit={handleSubmit(signup)}>
-            <div className=' flex flex-col sm:flex-row mb-4 mt-10 sm:mt-6'>
+            <div className=' flex flex-col sm:flex-row '>
                 <div className=' basis-1/2 px-8'>
                     
                     <h2 className="text-xl font-bold leading-tight text-orange-400 sm:text-2xl pb-4 pt-4">

@@ -96,27 +96,41 @@ function Login() {
     const handlePersist = (e)=>{
        dispatch(togglePersist())
     }
+    let imageSource
+    if(themeMode == 'dark'){
+          imageSource = '/maa_logo_dark.png'
+    }else{
+          imageSource='/maa_logo_light.png'
+    }
     return (
        
-        <section className=" bg-neutral-200 dark:bg-gray-950 h-screen border-collapse overflow-auto md:overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 h-screen">
-          <div className="flex items-center justify-center px-4 py-4 sm:px-6 sm:py-16 lg:px-8 md:py-8 ">
-            <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-            <p  className={ `${ errMsg ? ' bg-pink-200 p-4 text-red-500 m-2' : 'offscreen'} `} aria-live="assertive">{errMsg}</p>
-              <h2 className="text-3xl font-bold leading-tight text-orange-400 sm:text-2xl">
+        <section className=" bg-neutral-200 dark:bg-gray-950 h-screen border-collapse overflow-auto">
+        <div className="flex flex-col h-screen lg:items-center lg:justify-center lg:flex-row gap-0">
+        <div className="flex mt-5 items-center lg:order-2 justify-center">
+        <img
+              className='items-center justify-center' 
+              src={`${imageSource}`}
+              alt="Logo"
+        />
+          </div>
+          <div className="flex flex-col p-8">
+            <div className="w-full">
+              <p  className={ `${ errMsg ? ' bg-pink-200 p-4 text-red-500 m-2' : 'offscreen'} `} aria-live="assertive">{errMsg}</p>
+              <h2 className="font-bold leading-tight text-orange-400 text-2xl md:text-5xl text-center">
                 Sign in
               </h2>
-              
-              <form onSubmit={handleSubmit}  className="mt-8">
-                <div className="space-y-5">
-                  <div>
-                    <label htmlFor="userName" className="text-base font-medium text-gray-600 dark:text-white">
+            </div>
+            <div className="space-y-5">
+                <form onSubmit={handleSubmit}  className="mt-8">
+                  <div className='flex flex-col'>
+                  <div className='w-full mt-2'>
+                    <label htmlFor="userName" className="text-base md:text-2xl font-medium text-gray-600 dark:text-white">
                       {" "}
                       Username{" "}
                     </label>
                     <div className="mt-2">
                       <input
-                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 text-gray-600 dark:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex h-10 md:h-16 w-full rounded-md border border-gray-300 bg-transparent text-sm md:text-3xl px-4 placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 text-gray-600 dark:text-white disabled:cursor-not-allowed disabled:opacity-50"
                         type="text"
                         id="userName"
                         autoComplete='off'
@@ -126,16 +140,16 @@ function Login() {
                       />
                     </div>
                   </div>
-                  <div>
+                  <div className='mt-5'>
                     <div className="flex items-center justify-between">
-                      <label htmlFor="password" className="text-base font-medium dark:text-white text-gray-600">
+                      <label htmlFor="password" className="text-base md:text-2xl font-medium dark:text-white text-gray-600">
                         {" "}
                         Password{" "}
                       </label>
                     </div>
                     <div className="mt-2">
                       <input
-                        className="flex h-10 text-gray-600 dark:text-white w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex h-10 md:h-16 text-gray-600 dark:text-white w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm md:text-3xl placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="password"
                         id='password'
                         onChange={e=>setPassword(e.target.value)}
@@ -144,38 +158,36 @@ function Login() {
                       />
                     </div>
                   </div>
-                  <div>
+                  <div className='mt-5'>
 
                     <div className="mt-2">
                       <input
-                        className=" accent-sky-300"
+                        className=" accent-sky-300 md:h-7 md:w-7"
                         type="checkbox"
                         id='persist'
                         onChange={handlePersist}
                         checked={persist}
 
                       />
-                      <label htmlFor="persist" className="text-base font-medium text-gray-600 dark:text-white">
+                      <label htmlFor="persist" className="text-base md:text-3xl ml-2 font-medium text-gray-600 dark:text-white">
                         {" "}
                         Trust This Device?{" "}
                       </label>
                     </div>
                   </div>
-                  <div>
+                  <div className='mt-5'>
                     <button
-                      className="inline-flex w-full items-center justify-center rounded-md bg-sky-300 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-orange-400 hover:text-white"
+                      className="inline-flex w-full md:h-16 md:text-3xl items-center justify-center rounded-md bg-sky-300 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-orange-400 hover:text-white"
                     >
                       Sign In{" "}
                       <FontAwesomeIcon icon={faArrowRight} className='ml-2' />
                     </button>
                   </div>
-                </div>
+                  </div>
               </form>
             </div>
           </div>
-          <div className="flex items-center justify-start px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
-            <Logo className="mx-auto object-contain" />
-          </div>
+          
         </div>
       </section>
         

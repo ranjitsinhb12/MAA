@@ -5,11 +5,9 @@ import useAxiosPrivate from '../hooks/useAxiosPrivate'
 import axios from '../api/axios'
 
 function AllCompany() {
-    const [company, setCompany] = useState()
+    const [company, setCompany] = useState([])
     const axiosPrivate = useAxiosPrivate()
     const dispatch = useDispatch()
-    
-
     useEffect(()=>{
         let isMounted = true
         const controller = new AbortController()
@@ -31,6 +29,7 @@ function AllCompany() {
             
         }
     },[])
+
     
     const isLogedIn = useSelector(selectCurrentUser)
     if(!isLogedIn){
@@ -49,7 +48,7 @@ function AllCompany() {
         const selectedCompanyId = e.target.value
         if(selectedCompanyId){
             try {
-                const response = await axios.post('api/v1/user/update-company',
+                const response = await axios.post('/api/v1/user/update-company',
                      {companyId: selectedCompanyId},
                         {
                             headers: {'Content-Type': 'application/json'},
@@ -61,6 +60,7 @@ function AllCompany() {
                 console.log(error)
             }
         }
+
     }
 
     return (
@@ -68,7 +68,7 @@ function AllCompany() {
             name="selectedCompany"
             onChange={changeCompany}
             value={currentCompany}
-            className=' p-2 text-orange-400 bg-gray-100 dark:bg-gray-800'
+            className=' p-2 text-orange-400 bg-gray-100 dark:bg-gray-800 mt-2 w-full'
         >
            
            {companyOption}

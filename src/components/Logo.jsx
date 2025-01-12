@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import { Link} from 'react-router-dom'
 
 function Logo({
     className="",
@@ -13,13 +14,14 @@ function Logo({
    }
     return (
         <>
+        <Link to="/home" >
         <img
             {...props}
               className={`${className} `} 
               src={`${imageSource}`}
               alt="Logo"
         />
-          
+        </Link>
         </>
     )
 }

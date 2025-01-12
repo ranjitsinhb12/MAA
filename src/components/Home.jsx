@@ -15,7 +15,7 @@ function Home() {
 
         <Container>
 
-<div className="px-2 py-2 md:px-6 md:py-10">
+<div className="p-4">
   <h1 className="text-2xl font-bold capitalize text-orange-400 lg:text-3xl">
     Welcome to MAA...
   </h1>
@@ -25,7 +25,7 @@ function Home() {
   
   
   <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:mt-12 xl:grid-cols-3 xl:gap-16">
-    <div className="space-y-3 bg-neutral-200 dark:bg-gray-500 p-3 text-center ">
+    <div className="space-y-3 bg-white dark:bg-gray-500 p-3 text-center ">
       <h1 className="text-xl font-semibold capitalize text-black dark:text-sky-300">
         Jobcard
       </h1>
@@ -35,7 +35,7 @@ function Home() {
       
 
     </div>
-    <div className="space-y-3 bg-neutral-200 dark:bg-gray-500 p-3 text-center ">
+    <div className="space-y-3 bg-white dark:bg-gray-500 p-3 text-center ">
       <h1 className="text-xl font-semibold capitalize text-black dark:text-sky-300 ">
         EOD
       </h1>
@@ -43,7 +43,7 @@ function Home() {
         - This is a End of Day Calculator
       </p>
     </div>
-    <div className="space-y-3 bg-neutral-200 dark:bg-gray-500 p-3 text-center ">
+    <div className="space-y-3 bg-white dark:bg-gray-500 p-3 text-center ">
       <h1 className="text-xl font-semibold capitalize text-black dark:text-sky-300">
         Roster
       </h1>
@@ -51,7 +51,7 @@ function Home() {
         - Make staff roster easily and available to all staff
       </p>
     </div>
-    <div className="space-y-3 bg-neutral-200 dark:bg-gray-500 p-3 text-center ">
+    <div className="space-y-3 bg-white dark:bg-gray-500 p-3 text-center ">
       <h1 className="text-xl font-semibold capitalize text-black dark:text-sky-300">
         Timesheet
       </h1>

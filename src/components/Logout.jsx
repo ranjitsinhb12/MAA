@@ -25,7 +25,7 @@ function Logout() {
             <div
                 className="flex transform items-center px-3 py-2 text-gray-600 dark:text-gray-300 transition-colors duration-200 " onClick={signOut}
                 >
-                    <FontAwesomeIcon icon={faPowerOff} className='text-orange-400 text-3xl hover:text-red-500 cursor-pointer' />
+                    <FontAwesomeIcon icon={faPowerOff} className='text-orange-400 size-7 md:size-9 hover:text-red-500 cursor-pointer' />
             </div>
             </TooltipTrigger>
             <TooltipContent>

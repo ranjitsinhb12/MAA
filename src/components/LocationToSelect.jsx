@@ -80,7 +80,7 @@ function LocationToSelect() {
             {           
                     
                     location?.length ?
-                        <select className=' p-2 text-orange-400 bg-gray-100 dark:bg-gray-800'
+                        <select className=' p-2 text-orange-400 bg-gray-100 dark:bg-gray-800 mt-2 w-full'
                             name = "loginLocation" 
                             value={currentLocation} 
                             onChange={setDefault}
